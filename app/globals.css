@@ -1,26 +1,330 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@config '../tailwind.config.ts';
+@import 'tw-animate-css';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@custom-variant dark (&:is(.dark *));
+
+/* start of figma css config */
+@theme {
+  /* === TYPOGRAPHY: Font Size & Leading (Line Height) === */
+  /* Display 3xl */
+  --text-display-3xl: 3.75rem; /* 60px */
+  --leading-display-3xl: 4.5rem; /* 72px */
+
+  /* Display 2xl */
+  --text-display-2xl: 3rem; /* 48px */
+  --leading-display-2xl: 3.75rem; /* 60px */
+  --tracking-display-2xl: -2%; /* Letter spacing */
+
+  /* Display xl */
+  --text-display-xl: 2.5rem; /* 40px */
+  --leading-display-xl: 3rem; /* 48px */
+  --tracking-display-xl: -2%;
+
+  /* Display lg */
+  --text-display-lg: 2.25rem; /* 36px */
+  --leading-display-lg: 2.75rem; /* 44px */
+  --tracking-display-lg: -2%;
+
+  /* Display md */
+  --text-display-md: 2rem; /* 32px */
+  --leading-display-md: 2.5rem; /* 40px */
+
+  /* Display sm */
+  --text-display-sm: 1.75rem; /* 28px */
+  --leading-display-sm: 2.375rem; /* 38px */
+
+  /* Display xs */
+  --text-display-xs: 1.5rem; /* 24px */
+  --leading-display-xs: 2.25rem; /* 36px */
+
+  /* Text xl */
+  --text-xl: 1.25rem; /* 20px */
+  --leading-xl: 2.125rem; /* 34px */
+
+  /* Text lg */
+  --text-lg: 1.125rem; /* 18px */
+  --leading-lg: 2rem; /* 32px */
+
+  /* Text md */
+  --text-md: 1rem; /* 16px */
+  --leading-md: 1.875rem; /* 30px */
+
+  /* Text sm */
+  --text-sm: 0.875rem; /* 14px */
+  --leading-sm: 1.75rem; /* 28px */
+
+  /* Text xs */
+  --text-xs: 0.75rem; /* 12px */
+  --leading-xs: 1.5rem; /* 24px */
+
+  /* === TRACKING (Letter Spacing) Scale === */
+  --tracking-tight: -0.05em; /* -0.8px @ 16px base */
+  --tracking-tighter: -0.025em; /* -0.4px */
+  --tracking-normal: 0em; /* 0 */
+  --tracking-wide: 0.025em; /* +0.4px */
+  --tracking-wider: 0.05em; /* +0.8px */
+  --tracking-widest: 0.1em; /* +1.6px */
+
+  /* Apply to large display styles (as per Figma spec) */
+  --tracking-display-2xl: var(--tracking-tight);
+  --tracking-display-xl: var(--tracking-tight);
+  --tracking-display-lg: var(--tracking-tight);
+
+  /* === FONT WEIGHTS (Montserrat) === */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* === FONT FAMILY === */
+  --font-family: 'Montserrat', sans-serif;
+
+  /* === SEMANTIC TYPOGRAPHY TOKENS === */
+  --font-heading: 700 var(--text-display-3xl) / var(--leading-display-3xl)
+    var(--font-family);
+  --font-display: 600 var(--text-display-lg) / var(--leading-display-lg)
+    var(--font-family);
+  --font-title: 600 var(--text-xl) / var(--leading-xl) var(--font-family);
+  --font-body: 400 var(--text-md) / var(--leading-md) var(--font-family);
+  --font-caption: 400 var(--text-sm) / var(--leading-sm) var(--font-family);
 }
 
+@theme {
+  /* Neutral Palette (Gray) */
+  --color-neutral-25: #fdfdfd;
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #f5f5f5;
+  --color-neutral-200: #e9eaeb;
+  --color-neutral-300: #d5d7da;
+  --color-neutral-400: #a4a7ae;
+  --color-neutral-500: #717680;
+  --color-neutral-600: #535862;
+  --color-neutral-700: #414651;
+  --color-neutral-800: #252b37;
+  --color-neutral-900: #181d27;
+  --color-neutral-950: #0a0d12;
+
+  /* Primary Palette */
+  --color-primary-100: #f1dfe6;
+  --color-primary-200: #da627d;
+  --color-primary-300: #b76080;
+  --color-primary-400: #860d39;
+  --color-primary-hero-300: #a53860f0;
+
+  /* Secondary Palette */
+  --color-secondary-100: #f3b64c;
+
+  /* Base Colors */
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Semantic Color Roles (with WCAG AA/AAA compliance notes) */
+  --color-bg: var(--color-neutral-25); /* Default background */
+  --color-surface: var(--color-neutral-50);
+  --color-border: var(--color-neutral-200);
+  --color-text: var(--color-neutral-900); /* AAA 7.02 on --color-bg */
+  --color-text-muted: var(--color-neutral-600); /* AA 5.92 on --color-bg */
+  --color-primary: var(--color-primary-300); /* Main brand color */
+  --color-primary-hover: var(--color-primary-400);
+  --color-secondary: var(--color-secondary-100);
+}
+
+@theme {
+  /* Border Radius Scale (based on 16px rem base) */
+  --radius-none: 0rem; /* 0px */
+  --radius-xxs: 0.125rem; /* 2px */
+  --radius-xs: 0.25rem; /* 4px */
+  --radius-sm: 0.375rem; /* 6px */
+  --radius-md: 0.5rem; /* 8px */
+  --radius-lg: 0.625rem; /* 10px */
+  --radius-xl: 0.75rem; /* 12px */
+  --radius-2xl: 1rem; /* 16px */
+  --radius-3xl: 1.25rem; /* 20px */
+  --radius-4xl: 1.5rem; /* 24px */
+  --radius-full: 9999px; /* Full rounded (pill/circle) */
+
+  /* Semantic Radius Tokens */
+  --radius-button: var(--radius-md); /* Default for buttons */
+  --radius-input: var(--radius-md); /* Form elements */
+  --radius-card: var(--radius-lg); /* Cards, modals */
+  --radius-badge: var(--radius-full); /* Badges, tags */
+  --radius-avatar: var(--radius-full); /* Avatars, icons */
+  --radius-image: var(--radius-sm); /* Image thumbnails */
+}
+
+@theme {
+  /* Spacing Scale (16px base rem system) */
+  --spacing-none: 0rem; /* 0px */
+  --spacing-xxs: 0.125rem; /* 2px */
+  --spacing-xs: 0.25rem; /* 4px */
+  --spacing-sm: 0.375rem; /* 6px */
+  --spacing-md: 0.5rem; /* 8px */
+  --spacing-lg: 0.75rem; /* 12px */
+  --spacing-xl: 1rem; /* 16px */
+  --spacing-2xl: 1.25rem; /* 20px */
+  --spacing-3xl: 1.5rem; /* 24px */
+  --spacing-4xl: 2rem; /* 32px */
+  --spacing-5xl: 2.5rem; /* 40px */
+  --spacing-6xl: 3rem; /* 48px */
+  --spacing-7xl: 4rem; /* 64px */
+  --spacing-8xl: 5rem; /* 80px */
+  --spacing-9xl: 6rem; /* 96px */
+  --spacing-10xl: 8rem; /* 128px */
+  --spacing-11xl: 8.75rem; /* 140px */
+
+  /* Semantic Spacing Tokens (Common Use Cases) */
+  --spacing-gap: var(--spacing-md); /* Default gap in flex/grid */
+  --spacing-padding-sm: var(--spacing-sm);
+  --spacing-padding-md: var(--spacing-md);
+  --spacing-padding-lg: var(--spacing-lg);
+  --spacing-margin-sm: var(--spacing-xs);
+  --spacing-margin-md: var(--spacing-md);
+  --spacing-margin-lg: var(--spacing-xl);
+  --spacing-section: var(--spacing-6xl); /* Section vertical spacing */
+  --spacing-component: var(--spacing-4xl); /* Between components */
+  --spacing-inline: var(--spacing-lg); /* Inline element spacing */
+}
+/* end of figma css sonfig */
+
+/* start of shadcn css config */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-montserrat: var(--font-montserrat);
+  --font-anton: var(--font-anton);
+  --font-bonheur-royale: var(--font-bonheur-royale);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+/* end of shadcn css config */
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-background text-md font-montserrat text-neutral-950;
+}
+
+@layer components {
+  .custom-container {
+    margin: 0 auto;
+    @apply max-w-360 px-30 py-20;
+  }
+}
+
+@layer utilities {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+
+  .flex-start {
+    @apply flex items-center justify-start;
+  }
 }
