@@ -8,7 +8,7 @@ const buttonVariants = cva('cursor-pointer', {
   variants: {
     variant: {
       default: 'bg-secondary-100 rounded-full',
-      outline: 'border rounded-full',
+      outline: 'border border-neutral-300 rounded-full',
     },
     size: {
       default: ' h-14',

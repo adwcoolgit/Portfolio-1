@@ -1,15 +1,37 @@
+'use client';
+
 import { ComponentProps } from '@/app/generic-type';
 import { ProfileProps } from '@/constant/data-profile-data';
+import { useSpring } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 
 export const ProfileItem: React.FC<
   ComponentProps & ProfileProps & { lasItem: boolean }
-> = ({ value, descryption, lasItem }) => {
+> = ({ value, descryption, symbol, lasItem }) => {
+  const [displayValue, setDisplayValue] = useState(0);
+  const springCount = useSpring(1, { bounce: 0, duration: 5000 });
+
+  springCount.on('change', (value) => {
+    setDisplayValue(Math.round(value));
+  });
+
+  useEffect(() => {
+    springCount.set(Number(value));
+  }, []);
+
   return (
     <>
       <div className='flex-col'>
-        <div className='display-2xl-bold text-background leading-display-2xl'>
-          {value}
-        </div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4 }}
+          className='display-2xl-bold text-background leading-display-2xl'
+        >
+          {displayValue}
+          {symbol}
+        </motion.div>
         <div className='text-md-semibold text-background leading-md tracking-[1px]'>
           {descryption}
         </div>

@@ -2,7 +2,6 @@ import { mainProfile } from '@/constant/data-profile-data';
 import { ProfileItem } from './profile-item';
 import { Button } from './ui/button';
 import { ArrowRight } from 'lucide-react';
-import { RoundedIcon } from './rounded-icon';
 
 export const Profiles: React.FC = () => {
   return (
@@ -11,6 +10,7 @@ export const Profiles: React.FC = () => {
         <ProfileItem
           value={profile.value}
           descryption={profile.descryption}
+          symbol={profile.symbol}
           key={profile.descryption}
           lasItem={index == mainProfile.length - 1}
         />

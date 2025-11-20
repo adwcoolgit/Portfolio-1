@@ -5,7 +5,6 @@ import { cn } from '@/lib/utils';
 
 export const AbilityCard: React.FC<ComponentProps & AbilityProps> = ({
   className,
-  children,
   icon,
   title,
   descryption,
@@ -15,9 +14,10 @@ export const AbilityCard: React.FC<ComponentProps & AbilityProps> = ({
       <RoundedIcon
         alt={title}
         src={icon}
-        width={63}
-        height={63}
-        className='size-15.75 gap-4 overflow-hidden border-neutral-300 object-scale-down p-3'
+        fill={false}
+        className='gap-4 overflow-hidden border-neutral-300 object-scale-down'
+        variant={'default'}
+        size={'sm'}
       />
       <div className='flex flex-col gap-y-2'>
         <h3 className='text-display-xs leading-display-xs container font-bold tracking-wide'>

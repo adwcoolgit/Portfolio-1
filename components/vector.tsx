@@ -1,6 +1,7 @@
 import { ComponentProps } from '@/app/generic-type';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
+
 export const VectorImg: React.FC<ComponentProps> = ({ className }) => {
   return (
     <>

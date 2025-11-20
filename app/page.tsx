@@ -6,10 +6,13 @@ import { Button } from '@/components/ui/button';
 import { VectorImg } from '@/components/vector';
 import { Wrapper } from '@/components/wrapper';
 import { abilities } from '@/constant/abilities';
-import { Mic, Mouse } from 'lucide-react';
+import { Mouse } from 'lucide-react';
 import Image from 'next/image';
 import { Fragment } from 'react/jsx-runtime';
 import { Icon } from '@iconify/react';
+import { UITechCard } from '@/components/card-tech/partials';
+import { techCard } from '@/constant/tech-card-data';
+import { UICaousel } from '@/components/carousel';
 
 export default function Home() {
   return (
@@ -93,6 +96,32 @@ export default function Home() {
           </Fragment>
         ))}
       </Wrapper>
+      <UITechCard.Wrapper className='h-fit gap-y-4 px-65'>
+        <UICaousel.Content className='mx-auto flex h-fit w-full grow gap-x-5'>
+          {techCard.map((tech, index) => (
+            <UITechCard.Card
+              key={tech.title}
+              className={`${index % 2 == 0 ? 'bg-secondary-100' : 'bg-background border border-neutral-300'} gap-y-3 px-4 py-10`}
+            >
+              <UITechCard.Icon
+                src={tech.icon}
+                alt={tech.title}
+                className={`gap-4 gap-y-3 overflow-hidden ${index % 2 == 0 ? 'bg-neutral-25' : 'bg-neutral-100'} object-scale-down p-3`}
+                variant={'borderless'}
+              />
+              <div className='flex-col'>
+                <div className='text-md-semibold leading-md flex-center tracking-normal'>
+                  {tech.title}
+                </div>
+                <div className='text-md-regular leading-md flex-center text-center tracking-normal'>
+                  {tech.descryption}
+                </div>
+              </div>
+            </UITechCard.Card>
+          ))}
+        </UICaousel.Content>
+        <UICaousel.Navigation />
+      </UITechCard.Wrapper>
     </>
   );
 }

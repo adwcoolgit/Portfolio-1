@@ -3,10 +3,7 @@ import { navProperties } from '@/constant/navigation-data';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
-export const Navigation: React.FC<ComponentProps> = ({
-  children,
-  className,
-}) => {
+export const Navigation: React.FC<ComponentProps> = ({ className }) => {
   return (
     <nav
       className={cn(
