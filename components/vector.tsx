@@ -7,7 +7,7 @@ export const VectorImg: React.FC<ComponentProps> = ({ className }) => {
     <>
       <div
         className={cn(
-          'flex-center absolute z-10 flex size-41.5 translate-x-1/5 -translate-y-3/4 border-0',
+          'flex-center absolute z-0 flex size-41.5 border-0 md:translate-x-1/5 md:-translate-y-3/4',
           className
         )}
       >

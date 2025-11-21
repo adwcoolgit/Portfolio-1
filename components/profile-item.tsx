@@ -27,16 +27,15 @@ export const ProfileItem: React.FC<
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4 }}
-          className='display-2xl-bold text-background leading-display-2xl'
+          className='display-md-bold leading-display-md md:display-2xl-bold text-background md:leading-display-2xl w-auto'
         >
           {displayValue}
           {symbol}
         </motion.div>
-        <div className='text-md-semibold text-background leading-md tracking-[1px]'>
+        <div className='text-xs-semibold leading-xs md:text-md-semibold text-background md:leading-md w-auto tracking-[1px]'>
           {descryption}
         </div>
       </div>
-      {!lasItem && <div className='border-primary-300 border-t' />}
     </>
   );
 };

@@ -13,7 +13,7 @@ const buttonVariants = cva('cursor-pointer', {
     size: {
       default: ' h-14',
       icon: 'size-9',
-      'icon-sm': 'size-9',
+      'icon-sm': 'size-12',
       'icon-md': 'size-15.75',
       'icon-lg': 'size-17.25',
     },

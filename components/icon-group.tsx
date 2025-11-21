@@ -35,7 +35,7 @@ export const IconGroup: React.FC<ComponentProps> = ({ className }) => {
       initial='idle'
       whileDrag='drag'
       className={cn(
-        'border-primary-300 left-0 flex h-fit w-fit cursor-pointer flex-col gap-y-5.5 rounded-full border px-5.25 py-8.25',
+        'border-primary-300 left-0 mt-7 hidden h-fit w-fit cursor-pointer flex-col gap-y-5.5 rounded-full border px-5.25 py-8.25 md:flex',
         className
       )}
     >
@@ -43,6 +43,8 @@ export const IconGroup: React.FC<ComponentProps> = ({ className }) => {
         <motion.div
           style={{ x, y, rotateX, rotateY, z: 1000 }}
           key={icon.title}
+          variants={variants}
+          className='flex h-fit w-fit rounded-full'
         >
           <RoundedIcon
             alt={icon.title}

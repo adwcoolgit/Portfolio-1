@@ -6,7 +6,7 @@ export const Wrapper: React.FC<ComponentProps> = ({ children, className }) => {
     <>
       <div
         className={cn(
-          'custom-container relative flex h-255.75 flex-col items-center overflow-hidden border-0 py-20',
+          'custom-container relative flex h-fit w-full flex-col items-center overflow-hidden border-0 px-4 py-10 md:py-20',
           className
         )}
       >
